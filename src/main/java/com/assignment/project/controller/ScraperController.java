@@ -18,7 +18,7 @@ public class ScraperController {
         this.scraperService = scraperService;
     }
 
-    @GetMapping("/")
+    @RequestMapping("/")
     @ResponseBody
     String home() {
         return "Hello World!";
