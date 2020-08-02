@@ -19,7 +19,7 @@ public class ProjectApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/content").allowedOrigins("http://localhost:8081");
+                registry.addMapping("/api/content").allowedOrigins("https://sheltered-shore-05178.herokuapp.com/");
             }
         };
     }
