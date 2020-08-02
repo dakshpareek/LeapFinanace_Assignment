@@ -18,13 +18,13 @@ public class ScraperController {
         this.scraperService = scraperService;
     }
 
-    @RequestMapping("/")
-    @ResponseBody
-    String home() {
-        return "Hello World!";
+    @GetMapping("/")
+    public ResponseEntity getHome()
+    {
+        return ResponseEntity.ok("Welcome To App. Now Login To Make Request");
     }
 
-    @PostMapping("/content")
+    @PostMapping("/api/content")
     public ResponseEntity scrapeUrl(@Valid @RequestBody UrlDTO urlDTO) throws IOException {
         String scrapeUrlData = scraperService.scrapeUrl(urlDTO.getUrl());
         return ResponseEntity.ok(scrapeUrlData);
