@@ -11,6 +11,7 @@ import java.io.IOException;
 
 @RestController
 @Slf4j
+@CrossOrigin(origins = "https://sheltered-shore-05178.herokuapp.com", maxAge = 3600)
 public class ScraperController {
 
     private ScraperService scraperService;
