@@ -1,9 +1,12 @@
 package com.assignment.project.controller;
 
+import com.assignment.project.config.IsAdmin;
+import com.assignment.project.config.IsUser;
 import com.assignment.project.dto.UrlDTO;
 import com.assignment.project.service.ScraperService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,13 +22,17 @@ public class ScraperController {
         this.scraperService = scraperService;
     }
 
+
     @GetMapping("/")
+    @IsAdmin
     public ResponseEntity getHome()
     {
         return ResponseEntity.ok("Welcome To App. Now Login To Make Request");
     }
 
+
     @PostMapping("/api/content")
+    @IsUser
     public ResponseEntity scrapeUrl(@Valid @RequestBody UrlDTO urlDTO) throws IOException {
         String scrapeUrlData = scraperService.scrapeUrl(urlDTO.getUrl());
         return ResponseEntity.ok(scrapeUrlData);
